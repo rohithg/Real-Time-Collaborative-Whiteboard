@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collaborative Whiteboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="toolbar">
+            <div class="toolbar-section">
+                <h1>✏️ CollabBoard</h1>
+                <div class="user-count">
+                    <span class="status-dot"></span>
+                    <span id="userCount">0 users</span>
+                </div>
+            </div>
+            
+            <div class="toolbar-section tools">
+                <div class="tool-group">
+                    <label>Brush Size:</label>
+                    <input type="range" id="brushSize" min="1" max="50" value="3">
+                    <span id="brushSizeValue">3px</span>
+                </div>
+                
+                <div class="tool-group">
+                    <label>Color:</label>
+                    <input type="color" id="colorPicker" value="#000000">
+                </div>
+                
+                <div class="tool-group">
+                    <button id="eraserBtn" class="tool-btn">🧹 Eraser</button>
+                    <button id="clearBtn" class="tool-btn danger">🗑️ Clear All</button>
+                </div>
+            </div>
+        </header>
+        
+        <div class="canvas-container">
+            <canvas id="whiteboard"></canvas>
+        </div>
+        
+        <div class="connection-status" id="connectionStatus">
+            Connecting...
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>

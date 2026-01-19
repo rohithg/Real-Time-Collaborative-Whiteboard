@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Sans:wght@400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #6366f1;
+    --primary-dark: #4f46e5;
+    --danger: #ef4444;
+    --success: #22c55e;
+    --bg: #0f0f0f;
+    --surface: #1a1a1a;
+    --border: #2a2a2a;
+    --text: #ffffff;
+    --text-muted: #a1a1a1;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow: hidden;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.toolbar {
+    background: var(--surface);
+    border-bottom: 2px solid var(--border);
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    backdrop-filter: blur(10px);
+}
+
+.toolbar-section {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary), #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.user-count {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--bg);
+    border-radius: 100px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--success);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.tools {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.tool-group {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.tool-group label {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+#brushSize {
+    width: 120px;
+    height: 6px;
+    border-radius: 10px;
+    background: var(--border);
+    outline: none;
+    -webkit-appearance: none;
+}
+
+#brushSize::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--primary);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+#brushSize::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+#brushSizeValue {
+    font-size: 0.875rem;
+    color: var(--text);
+    min-width: 40px;
+    font-weight: 500;
+}
+
+#colorPicker {
+    width: 50px;
+    height: 40px;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    background: transparent;
+}
+
+#colorPicker::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+#colorPicker::-webkit-color-swatch {
+    border: none;
+    border-radius: 6px;
+}
+
+.tool-btn {
+    padding: 0.625rem 1.25rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.tool-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+.tool-btn.danger {
+    background: var(--danger);
+}
+
+.tool-btn.danger:hover {
+    background: #dc2626;
+}
+
+.canvas-container {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    background: 
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 19px,
+            var(--border) 19px,
+            var(--border) 20px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 19px,
+            var(--border) 19px,
+            var(--border) 20px
+        );
+}
+
+#whiteboard {
+    display: block;
+    cursor: crosshair;
+    background: transparent;
+}
+
+.connection-status {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: 100px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.connection-status.show {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .toolbar {
+        padding: 1rem;
+    }
+    
+    .toolbar-section {
+        gap: 1rem;
+    }
+    
+    .tools {
+        gap: 1rem;
+    }
+    
+    h1 {
+        font-size: 1.25rem;
+    }
+}
